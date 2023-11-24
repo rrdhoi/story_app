@@ -1,0 +1,11 @@
+fvm flutter pub run build_runner build --delete-conflicting-outputs
+
+flutter packages pub run build_runner watch — delete-conflicting-outputs
+
+// generate locale
+flutter pub run easy_localization:generate -S assets/l10n -f keys -O lib/l10n -o locale_keys.g.dart
+flutter pub run easy_localization:generate -S assets/l10n -f keys -O lib/app/shared/l10n -o locale_keys.g.dart
+
+// fix warning
+fvm dart fix --apply
+fvm dart format lib

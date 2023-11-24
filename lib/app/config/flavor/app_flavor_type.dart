@@ -1,0 +1,1 @@
+enum AppFlavorType { free, paid }
