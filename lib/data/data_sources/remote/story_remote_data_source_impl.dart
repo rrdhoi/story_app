@@ -82,8 +82,6 @@ class StoryRemoteDataSourceImpl implements StoryRemoteDataSource {
         queryParameters: {
           'page': page,
           'size': size,
-          'location':
-              (AppFlavorConfig.instance.flavor == AppFlavorType.free) ? 0 : 1,
         },
         options: DioOptions.fetchDataOptions(token: token),
       );

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:story_app/app/config/app_key.dart';
+import 'package:story_app/app/constants/app_constants.dart';
 
 enum BrightnessMode { dark, light }
 
@@ -18,7 +18,7 @@ class ServicesProvider extends ChangeNotifier {
   Future<void> _loadBrightnessMode() async {
     var brightness =
         SchedulerBinding.instance.platformDispatcher.platformBrightness;
-    final bool isDarkMode = sharedPreferences.getBool(AppKey.brightnessMode) ??
+    final bool isDarkMode = sharedPreferences.getBool(AppConstants.brightnessMode) ??
         brightness == Brightness.dark;
     _brightnessMode = isDarkMode ? BrightnessMode.dark : BrightnessMode.light;
     notifyListeners();
@@ -26,7 +26,7 @@ class ServicesProvider extends ChangeNotifier {
 
   Future<void> setBrightnessMode(BrightnessMode mode) async {
     final bool isDarkMode = mode == BrightnessMode.dark;
-    await sharedPreferences.setBool(AppKey.brightnessMode, isDarkMode);
+    await sharedPreferences.setBool(AppConstants.brightnessMode, isDarkMode);
     _brightnessMode = mode;
     notifyListeners();
   }
